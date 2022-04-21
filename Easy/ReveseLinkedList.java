@@ -1,4 +1,4 @@
-package Easy;
+package easy;
 /**
  * Definition for singly-linked list.
  * public class ListNode {
