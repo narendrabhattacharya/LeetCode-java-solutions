@@ -1,5 +1,7 @@
 package easy;
 
+import java.util.Arrays;
+
 public class LongestSubSequence {
 
     int[] nums;
@@ -35,5 +37,30 @@ public class LongestSubSequence {
         
         return Math.max(a,b);
     }
+
+    /*
+        DP approach
+    */
+
+    public int helper1(int start, int end, int prev, int length){
+        int[] lis = new int[nums.length];
+        Arrays.fill(lis, 1);
+                    
+        for(int i=nums.length-1; i>=0; i--){
+            for(int j=nums.length-1; j>i; j--){
+                if(nums[j] > nums[i]){
+                    lis[i]= Math.max(lis[i],lis[j]+1);
+                }
+            }
+        }
+        
+        int maxLength = 0;
+        for(int l : lis){
+            maxLength=Math.max(maxLength, l);
+        }
+        return maxLength;
+    }
+
+
     
 }
